@@ -36,4 +36,11 @@ export class TodoComponent implements OnInit, DoCheck {
     await this.todoSrv.delay();
     this.todoSrv.changeTask(id);
   }
+
+  async removeTask(id: number) {
+    await this.todoSrv.delay();
+    this.todoSrv.removeTask(id).then((updateTodo: Todo[]) => {
+      this.todos = updateTodo;
+    });
+  }
 }
