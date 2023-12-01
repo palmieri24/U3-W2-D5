@@ -1,29 +1,40 @@
 <ng-container *ngIf="waiting; else waitingTrue"
-  ><p>Recupero Task...</p></ng-container
+  ><p class="d-flex align-items-center justify-content-center mt-4 text-white">
+    Recupero Task...
+  </p></ng-container
 >
 <ng-template #waitingTrue>
   <div class="d-flex align-items-center justify-content-center mt-5">
     <input type="text" [(ngModel)]="newTask" placeholder="Add a new task" />
-    <button type="button" class="ms-1" (click)="addNewTask()">+</button>
+    <button
+      type="button"
+      class="ms-1 rounded text-white"
+      id="btnAdd"
+      (click)="addNewTask()"
+    >
+      +
+    </button>
   </div>
   <div *ngFor="let newTask of todos" class="d-flex justify-content-center">
     <div *ngIf="newTask.completed">
-      <ul>
+      <ul
+        class="d-flex justify-content-center align-items-center mt-5 text-white"
+      >
         <li>{{ newTask.title }}</li>
-      </ul>
 
-      <button
-        class="bg-success border border-0 me-2"
-        (click)="changeTask(newTask.id)"
-      >
-        <i class="bi bi-check-lg text-white"></i>
-      </button>
-      <button
-        class="bg-danger border border-0"
-        (click)="removeTask(newTask.id)"
-      >
-        <i class="bi bi-trash text-white"></i>
-      </button>
+        <button
+          class="bg-success border border-0 mx-2 rounded"
+          (click)="changeTask(newTask.id)"
+        >
+          <i class="bi bi-check-lg text-white"></i>
+        </button>
+        <button
+          class="bg-danger border border-0 rounded"
+          (click)="removeTask(newTask.id)"
+        >
+          <i class="bi bi-trash text-white"></i>
+        </button>
+      </ul>
     </div>
   </div>
 </ng-template>
