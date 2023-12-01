@@ -1,0 +1,17 @@
+<ng-container *ngIf="waiting; else waitingTrue"
+  ><p>Recupero Task...</p></ng-container
+>
+
+<ng-template #waitingTrue
+  ><div class="center-page">
+    <div *ngFor="let newTask of todos">
+      <div *ngIf="!newTask.completed">
+        <ul>
+          <li>{{ newTask.title }}</li>
+        </ul>
+
+        <button (click)="changeTask(newTask.id)"></button>
+      </div>
+    </div>
+  </div>
+</ng-template>

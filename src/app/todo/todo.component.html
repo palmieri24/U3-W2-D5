@@ -1,0 +1,23 @@
+<!--<div>
+  <form class="center-page">
+    <input type="text" id="input" placeholder="Add a new task" />
+    <button type="submit">+</button>
+    <button type="button"><i class="bi bi-trash"></i></button>
+  </form>
+</div>-->
+<ng-container *ngIf="waiting; else waitingTrue"
+  ><p>Recupero Task...</p></ng-container
+>
+<ng-template #waitingTrue>
+  <input type="text" [(ngModel)]="newTask" />
+  <button type="button" (click)="addNewTask()">+</button>
+  <div *ngFor="let newTask of todos">
+    <div *ngIf="newTask.completed">
+      <ul>
+        <li>{{ newTask.title }}</li>
+      </ul>
+
+      <button (click)="changeTask(newTask.id)">completed</button>
+    </div>
+  </div>
+</ng-template>
